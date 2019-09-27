@@ -1,5 +1,5 @@
 import * as actionTypes from './actionTypes';
-import axios from '../../axios-orders'
+import axios from 'axios'
 
 export const purchaseBurgerSuccess = (id,orderData) =>{
     return {
@@ -60,8 +60,9 @@ export const fetchOrdersStart = () =>{
 export const fetchOrders = () =>{
     return dispatch =>{
         dispatch(fetchOrdersStart())
-        axios.get('/orders.json')
+        axios.get('https://react-burger-app11.firebaseio.com/orders.json')
         .then(response =>{
+            console.log(response)
             let fetchedOrders= []
             for(let key in response.data){
                 fetchedOrders.push(
